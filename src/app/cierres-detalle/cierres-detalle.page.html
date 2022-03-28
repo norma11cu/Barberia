@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="atras()">
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      Detalle del Cierre
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<div class="center-logo-pages">
+  <img src="../../assets/img/logo_trans.png" class="center-logo-pages-img">
+  <ion-label>
+    <p class="center-logo-p font-bold">Ventas de este cierre</p>
+  </ion-label>
+</div>
+
+<ion-content>
+  <div *ngIf="this.listVentas.length == 0" class=""
+    style="height: 100%; flex-direction: column; display: flex; justify-content: center; align-items: center;">
+    <ion-text>Aun no tienes ventas registradas</ion-text>
+  </div>
+
+  <ion-grid *ngIf="this.listVentas.length > 0">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div class="" *ngFor="let item of this.listVentas">
+            <ion-item lines="full" class="ion-activatable">
+              <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  Total :
+                </ion-text>
+                <ion-text color="secondary" class="font-bold"> {{item.totalVenta | currency}}</ion-text>
+                <p>
+                  <ion-text color="medium">{{item.fecha}} {{item.hora}} </ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

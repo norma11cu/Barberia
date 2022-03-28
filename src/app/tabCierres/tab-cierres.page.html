@@ -1,0 +1,60 @@
+<ion-header no-border>
+  <ion-toolbar color="secondary">
+    <ion-title class="ion-text-center" slot="">
+      Generar Cierre
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="center-logo-pages">
+  <img src="../../assets/img/logo_trans.png" class="center-logo-pages-img">
+  <ion-label>
+    <p class="center-logo-p font-bold">Cierres Generados</p>
+  </ion-label>
+</div>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="this.onGenerarCierre()" color="secondary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid *ngIf="this.listCierres.length > 0">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div *ngFor="let item of this.listCierres">
+            <ion-item lines="full" class="ion-activatable" (click)="lanzarVentasCierre(item)" detail>
+              <ion-label>
+                <p>
+                  <ion-text color="primary">Total Ventas: </ion-text>
+                  <ion-text color="secondary" class="font-bold">{{item.TotalVentas | currency}}</ion-text>
+                </p>
+                <p>
+                  <ion-text color="primary"># Servicios: </ion-text>
+                  <ion-text color="secondary" class="font-bold">{{ item.TotalServicios }}</ion-text>
+                </p>
+                <p>
+                  <ion-text color="primary"># Productos: </ion-text>
+                  <ion-text color="secondary" class="font-bold">{{ item.TotalProductos}}</ion-text>
+                </p>
+                
+                <p>
+                  <ion-text color="medium">{{item.fecha}} {{item.hora}}</ion-text>
+                </p>
+              </ion-label>
+            </ion-item>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="this.listCierres.length == 0" class=""
+    style="height: 100%; flex-direction: column; display: flex; justify-content: center; align-items: center;">
+    <ion-text>Generar un cierre diario</ion-text>
+  </div>
+
+</ion-content>

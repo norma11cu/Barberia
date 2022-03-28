@@ -1,0 +1,35 @@
+<ion-button fill="clear" (click)="this.cerrar()">
+  <ion-icon name="close-outline" slot="icon-only" color="secondary"></ion-icon>
+</ion-button>
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar showCancelButton="never" color="primary" debounce="500" (ionChange)="filtrar($event)"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<ion-content>
+
+  <br />
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div *ngFor="let item of this.filtro">
+            <ion-item lines="full" class="ion-activatable" (click)="this.alSeleccionarProducto(item)">
+              <ion-label slot="start">
+                <ion-text color="primary">{{item.descripcion}}</ion-text>
+              </ion-label>
+              <ion-label slot="end">
+                <ion-text color="secondary">{{item.costo | currency }}</ion-text>
+              </ion-label>
+            </ion-item>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

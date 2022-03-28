@@ -1,0 +1,68 @@
+<ion-header no-border>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="atras()">
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" slot="">
+      {{this.titulo}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+
+  <div class="center-logo-pages">
+    <img src="../../assets/img/logo_trans.png" class="center-logo-pages-img">
+  </div>
+  <div class="contenedor">
+
+    <ion-grid style="width: 90%;">
+      <form [formGroup]="this.frmProductos">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Descripción</ion-label>
+              <ion-input formControlName="descripcion" type="text"></ion-input>
+            </ion-item>
+            <p class="error-validate"
+              *ngIf="this.frmR.descripcion.hasError('required') && this.frmR.descripcion.touched">
+              Este campo no puede ir vacio.
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Costo</ion-label>
+              <ion-input formControlName="costo" type="number"></ion-input>
+            </ion-item>
+            <p class="error-validate" *ngIf="this.frmR.costo.hasError('required') && this.frmR.costo.touched">
+              Este campo no puede ir vacio.
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label>Tipo de Producto</ion-label>
+              <ion-select formControlName="idTipoProducto"  value="{{this.idDescTipoProducto}}"  selectedText={{this.descTipoProducto}} okText="Aceptar" cancelText="Cancelar">
+                <ion-select-option [disabled]="'true'" value="">Selecciona</ion-select-option>
+                <ion-select-option  *ngFor="let item of this.lstTiposProducto" value="{{item.idCatTipoProducto}}">{{item.descripcion}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <p class="error-validate" *ngIf="this.frmR.idTipoProducto.hasError('required') && this.frmR.idTipoProducto.touched">
+              Este campo no puede ir vacio.
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 40px;">
+          <ion-col class="ion-text-center">
+            <ion-button expand="block" (click)="this.guardarProducto()">Guardar</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+
+  </div>
+</ion-content>

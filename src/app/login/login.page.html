@@ -1,0 +1,45 @@
+<ion-content>
+
+  <div class="contenedor" style="height: 100%;">
+    <ion-grid style="height: 30%; margin-top: 5%;">
+      <ion-row>
+        <ion-col class="ion-text-center" offset="3" size="6">
+          <img class="animated slideInDown" src="../../assets/img/logo.png" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid style="height: 10%;" class="animated fadeIn">
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-text color="primary">
+            <ion-label class="font-titulo-bold ">Login</ion-label>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid style="width: 80%;">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Usuario</ion-label>
+            <ion-input type="text" ></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input  type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 40px;">
+        <ion-col class="ion-text-center">
+            <ion-button expand="block"  (click)="this.alIniciar()">Iniciar Sesión</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header no-border>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-button (click)="atras()">
+        <ion-icon slot="icon-only" name="chevron-back-outline" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center" slot="">
+      Acutalizar Venta
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="this.listProductos.length == 0" class=""
+    style="height: 100%; flex-direction: column; display: flex; justify-content: center; align-items: center;">
+    <ion-text>Aun no tienes productos cargados</ion-text>
+  </div>
+
+  <ion-grid *ngIf="this.listProductos.length > 0">
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div class="" *ngFor="let item of this.listProductos">
+            <ion-item lines="full">
+              <ion-label slot="start">
+                <ion-text color="primary">
+                  {{item.descProducto }}
+                </ion-text>
+              </ion-label>
+              <ion-label class="ion-text-center">
+                <ion-text color="secondary" class="font-bold">
+                  {{item.monto | currency}}
+                </ion-text>
+              </ion-label>
+              <ion-button (click)="this.eliminar(item)" slot="end" fill="clear">
+                <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-card class="ion-activatable" style="margin: 0px !important; ">
+  <ion-item lines="none">
+    <ion-label slot="start">
+      <ion-text color="secondary">
+
+      </ion-text>
+    </ion-label>
+    <ion-label slot="end">
+      <ion-text color="primary">
+        {{this.total | currency}}
+      </ion-text>
+    </ion-label>
+  </ion-item>
+  <ion-ripple-effect></ion-ripple-effect>
+</ion-card>
